@@ -33,7 +33,7 @@ make
 cd ..
 tar xfv lan865x_driver.202507291238.tar.gz
 tar xfv lan865x_dts.202507291238.tar.gz
-tar xfv linux-custom_patch.202507291238.tar.gz
+tar xfv lan865x_linux_custom.202507291238.tar.gz
 
 #### Or select by yourself 
 #cd mscc-brsdk-source-2024.09/output/mybuild
