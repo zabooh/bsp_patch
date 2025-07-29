@@ -109,10 +109,9 @@ wget http://mscc-ent-open-source.s3-eu-west-1.amazonaws.com/public_root/bsp/mscc
 tar xf mscc-brsdk-source-2024.09.tar.gz
 
 # Build Firmware first time
-cd mscc-brsdk-source-2024.09
-make BR2_EXTERNAL=./external O=output/mybuild/ linux-menuconfig
+make BR2_EXTERNAL=./external O=./output/mybuild arm_standalone_defconfig
 cd ./output/mybuild
-make menuconfig
+# make menuconfig
 make 
 
 # After this step the Linux Kernel Sources are download and installed in
@@ -126,7 +125,7 @@ tar xfv lan865x_linux_custom.202507291238.tar.gz
 
 #### Or select by yourself 
 #cd mscc-brsdk-source-2024.09/output/mybuild
-#make linux-menuconfig
+# make BR2_EXTERNAL=./external O=output/mybuild/ linux-menuconfig
 ## search for lan865x driver with "/lan865x"
 ## select the first hit with "1"
 ## click twice on space to get the * between <> 
