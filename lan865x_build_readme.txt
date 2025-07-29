@@ -35,14 +35,13 @@ tar xfv lan865x_driver.202507291238.tar.gz
 tar xfv lan865x_dts.202507291238.tar.gz
 tar xfv linux-custom_patch.202507291238.tar.gz
 
-
-cd mscc-brsdk-source-2024.09/output/mybuild
-make linux-menuconfig
-# search for lan865x driver with "/lan865x"
-# select the first hit with "1"
-# click twice on space to get the * between <> 
-#  <*>   Microchip LAN865x Ethernet driver
-# save and exit
-
-make 
+#### Or select by yourself 
+#cd mscc-brsdk-source-2024.09/output/mybuild
+#make linux-menuconfig
+## search for lan865x driver with "/lan865x"
+## select the first hit with "1"
+## click twice on space to get the * between <> 
+##  <*>   Microchip LAN865x Ethernet driver
+## save and exit
+#make 
 
