@@ -30,26 +30,68 @@
 ##########################################
 
 
-### http://kar-vm-gitlab/galileo/lan865x-linux-driver/-/blob/Galileo_RevB1_RTP_0v4/src/oa_tc6.c
+## Using Python TFTP server on Windows
+## Allowing UDP Port 69 for TFTP on Windows. Do it with Admin Shell
+New-NetFirewallRule -DisplayName "TFTP-UDP-69-Temp" -Direction Inbound -Action Allow -Protocol UDP -LocalPort 69
+
+## install TFTP 
+pip install py3tftp
+
+## Using py3tftp
+
+## ensure that brsdk_standalone_arm.ext4.gz is in the same directory
+## where py3tftp is started
+py3tftp --host 0.0.0.0 --port 69
+
+## setting network
+ifconfig eth0 169.254.35.123 netmask 255.255.0.0
+ifconfig eth0 up
+ping 169.254.35.184
+
+
+## sending file from LAN9662
+tftp -p -l dev_tree.txt -r dev_tree.txt 169.254.35.184
+
+
+##########################################
+#
+## Download and programm in UBOOT
+## Using AutoIP Addressing with direct cabling between Windows and LAN9662 EvalKit
+
+
+setenv ipaddr 169.254.35.123
+setenv netmask 255.255.0.0
+
+
+tftp 169.254.35.184:brsdk_standalone_arm.ext4.gz
+unzip ${loadaddr} ${mmc_unzip_loadaddr}
+run mmc_format
+run mmc_boot0_upd; run mmc_boot1_upd
+boot
+
+
+##########################################
+# Runtime
+
+ethtool --set-plca-cfg eth2 enable on node-id 0 node-cnt 8
+
+ethtool --get-plca-cfg eth2
+PLCA settings for eth2:
+        Enabled: Yes
+        local node ID: 0 (coordinator)
+        Node count: 8
+        TO timer: 32 BT
+        Burst count: 0 (disabled)
+        Burst timer: 128 BT
+        
+        
+
+ip addr add dev eth2 192.168.10.11/24
+ip link set eth2 up
+ifconfig
 
 
 
-# from here change to lan9662 board
-# see also at
-# https://microchip-ung.github.io/bsp-doc/bsp/2025.06-1/supported-hw/lan966x-boot.html#_from_emmc
-
-
-env set 'ipaddr 192.168.0.10'
-env set 'netmask 255.255.255.0'
-env set 'serverip 192.168.0.1'
-saveenv
-
-
-
-mmc_boot0_dlup=run mmc_dl; run mmc_boot0_upd
-mmc_dl=dhcp ${loadaddr} ${mmc_fw}; unzip ${loadaddr} ${mmc_unzip_loadaddr}
-mmc_boot0_upd=run div_512; mmc write ${mmc_unzip_loadaddr} ${mmc_offset_boot0} ${filesize_512}
-mmc_fw=brsdk_standalone_arm.ext4.gz
 
 
 
