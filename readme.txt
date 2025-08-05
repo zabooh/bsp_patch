@@ -5,17 +5,20 @@
 ###################################################################################################
 
 
-
 ## the following scripts are more to copy from and paste line by line into the command line  
 ## in theory they could be called, but when things go wrong because of installation issues, you
 ## not know what has went wrong. 
 ## this scripts are more ment as a How-To
 
 ## information is derived from the following links
-   https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
-   https://microchip.my.site.com/s/article/Step-by-step-guide-in-building-a-standalone-image-for-LAN966x-and-programming-it-to-EVB-LAN9662
-  
 
+   https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
+
+   https://microchip.my.site.com/s/article/Step-by-step-guide-in-building-a-standalone-image-for-LAN966x-and-programming-it-to-EVB-LAN9662
+
+
+  
+###### ON BUILD MACHINE BEGIN ###########################################
 ## this setups the needed tools:
    lan865x_build_tool_setup.sh
 
@@ -24,8 +27,11 @@
 
 ## and here is expplained how to patch the sources for the LAN9851 Click Board 
    lan865x_build_second.sh
+###### ON BUILD MACHINE END #############################################
 
 
+
+###### ON WINDOWS BEGIN #################################################
 ## The LAN9662 Board can get via TFTP a new Firmware
 ## easiest TFTP Server setup would be under Windows with
    pip install py3tftp
@@ -38,11 +44,16 @@
    py3tftp --host 0.0.0.0 --port 69
 
 ## ensure that brsdk_standalone_arm.ext4.gz is in the same directory where py3tftp is started
-   brsdk_standalone_arm.ext4.gz 
+##   brsdk_standalone_arm.ext4.gz 
+###### ON WINDOWS END ######################################################
 
+
+
+###### ON LAN9662 BOARD BEGIN ##############################################
 ## During startup of the Board, press Enter to enter UBoot mode
 ## Download and programm in UBOOT
 ## Using AutoIP Addressing with direct cabling between Windows and LAN9662 EvalKit
+## UBOOT:
 
    setenv ipaddr 169.254.35.123
    setenv netmask 255.255.0.0
@@ -52,34 +63,26 @@
    run mmc_boot0_upd; run mmc_boot1_upd
    boot
 
-##
 ## during Runtime of Linux
 ## setup the LAN8651
 
    ethtool --set-plca-cfg eth2 enable on node-id 0 node-cnt 8
-
    ethtool --get-plca-cfg eth2
-   PLCA settings for eth2:
-        Enabled: Yes
-        local node ID: 0 (coordinator)
-        Node count: 8
-        TO timer: 32 BT
-        Burst count: 0 (disabled)
-        Burst timer: 128 BT
-        
-        
-
+##   PLCA settings for eth2:
+##        Enabled: Yes
+##        local node ID: 0 (coordinator)
+##        Node count: 8
+##        TO timer: 32 BT
+##        Burst count: 0 (disabled)
+##        Burst timer: 128 BT
+                
    ip addr add dev eth2 192.168.10.11/24
    ip link set eth2 up
    ifconfig
 
 
 ## sending file from LAN9662
-   tftp -p -l dev_tree.txt -r dev_tree.txt 169.254.35.184
-
-
-
-
+#   tftp -p -l dev_tree.txt -r dev_tree.txt 169.254.35.184
 
 
 

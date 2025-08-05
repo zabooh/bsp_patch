@@ -1,11 +1,9 @@
 #!/bin/bash
 
+## Readme (General Tool Installation important)
+## https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
 
-# Readme (General Tool Installation important)
-# https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
-
-
-# Pro Conditions
+## Setup Pre Conditions
 
 sudo  apt-get install -y \
     asciidoc \
@@ -64,16 +62,13 @@ sudo  apt-get install -y \
     wget \
     xz-utils \
 
-# Additional Ruby packages
-$ sudo gem install nokogiri asciidoctor
+## Additional Ruby packages
+sudo gem install nokogiri asciidoctor
 
-# Enable use of `python` command instead of `python3`
-$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 100
+## Enable use of `python` command instead of `python3`
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 100
 
-# Additional Python packages
-$ sudo python -m pip install matplotlib
-
-
-
-
+## Additional Python packages
+## sudo python -m pip install matplotlib
+sudo apt install python3-matplotlib
 
