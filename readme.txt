@@ -81,8 +81,42 @@
    ifconfig
 
 
-## sending file from LAN9662
+## for example sending a file from LAN9662 to TFTP server
 #   tftp -p -l dev_tree.txt -r dev_tree.txt 169.254.35.184
+
+
+###################################################
+##
+## File Overlay
+## 
+## make menuconfig
+##  System configuration  --->
+##     (board/mscc/common/rootfs_overlay) Root filesystem overlay directories 
+##
+##
+##    mscc-brsdk-source-2024.09/board/mscc/common/rootfs_overlay
+##
+##   .
+##   ├── etc
+##   │   ├── mscc
+##   │   │   └── service
+##   │   │       └── debug_shell.service
+##   │   └── sysctl.d
+##   │       └── 99-sysctl.conf
+##   └── usr
+##       └── bin
+##           ├── dump-env.sh
+##           └── production-prepare.sh
+##
+
+	
+
+
+
+  
+
+
+
 
 
 

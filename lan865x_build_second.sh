@@ -7,10 +7,12 @@
 tar xfv lan865x_driver.202507291238.tar.gz
 tar xfv lan865x_dts.202507291238.tar.gz
 tar xfv lan865x_linux_custom.202507291238.tar.gz 
+tar xfv lan865x_InitScript.tar.gz
 
 cd ./mscc-brsdk-source-2024.09/output/mybuild
 ## do it again
-## when the device tree source is changed, the dtb file must be deleted
+## when the device tree source is changed, the dtb file must be deleted to be build new
 rm build/linux-custom/arch/arm/boot/dts/microchip/lan966x-pcb8291.dtb
+## only build linux kernel new
 make linux-rebuild
 

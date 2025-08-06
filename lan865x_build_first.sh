@@ -20,7 +20,7 @@ export PATH="$CMAKE_PATH/bin:$PATH"
 ## or add the absolute path directly to PATH
 ## Attention, the following line is only temporary
 # export PATH=/home/martin/lan9662/bsp_sources/bsp_patch/cmake-3.5.2-Linux-x86_64/bin:$PATH
-## the one step back
+## then one step back
 cd ..
 
 ## Get LAN9662 Board Support Package
@@ -37,6 +37,6 @@ make
 ## After this step the Linux Kernel Sources are download and installed in
 ##    mscc-brsdk-source-2024.09/output/mybuild/build/linux-custom
 
-## back to root of git clone
+## get back to root of git clone
 cd ../../../
 
