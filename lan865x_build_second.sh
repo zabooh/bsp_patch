@@ -6,9 +6,11 @@
 ## Patch the Kernel Driver, the DTS and the linux config for LAN865X support
 tar xfv lan865x_driver.202507291238.tar.gz
 tar xfv lan865x_dts.202507291238.tar.gz
-tar xfv lan865x_linux_custom.202507291238.tar.gz
+tar xfv lan865x_linux_custom.202507291238.tar.gz 
 
 cd ./mscc-brsdk-source-2024.09/output/mybuild
 ## do it again
-make
+## when the device tree source is changed, the dtb file must be deleted
+rm build/linux-custom/arch/arm/boot/dts/microchip/lan966x-pcb8291.dtb
+make linux-rebuild
 
