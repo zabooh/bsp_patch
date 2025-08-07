@@ -19,7 +19,22 @@ CMAKE_PATH="$(pwd)"
 export PATH="$CMAKE_PATH/bin:$PATH"
 ## or add the absolute path directly to PATH
 ## Attention, the following line is only temporary
+## or you can add the following line to ~/.bashrc for persistance
 # export PATH=/home/martin/lan9662/bsp_sources/bsp_patch/cmake-3.5.2-Linux-x86_64/bin:$PATH
+
+## this buildroot bsp do expect an cmake version<4.x.x
+## so you maybe have to install an older one 
+## check with 
+# cmake --version
+## if you use an older version of cmake, it could be that on newer Ubuntu (24.04) a library is missing
+## if so, you'll see the following error message when you try to get the cmake version                                                       │
+# cmake: error while loading shared libraries: libidn.so.11: cannot open shared object file: No such file or directory
+## Then you have install the libidn11 from an older Ubuntu Version:
+# wget https://old-releases.ubuntu.com/ubuntu/pool/main/libi/libidn/libidn11_1.33-2.2ubuntu1_amd64.deb
+# sudo dpkg -i libidn11_1.33-2.2ubuntu1_amd64.deb
+# sudo apt -f install
+
+
 ## then one step back
 cd ..
 

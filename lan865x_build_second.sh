@@ -13,6 +13,7 @@ cd ./mscc-brsdk-source-2024.09/output/mybuild
 ## do it again
 ## when the device tree source is changed, the dtb file must be deleted to be build new
 rm build/linux-custom/arch/arm/boot/dts/microchip/lan966x-pcb8291.dtb
-## only build linux kernel new
+## only build linux kernel and dtb new 
 make linux-rebuild
-
+## make complete image
+make

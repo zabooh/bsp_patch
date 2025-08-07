@@ -72,3 +72,11 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 100
 ## sudo python -m pip install matplotlib
 sudo apt install python3-matplotlib
 
+
+## It can happe on Ubuntu 24.04 that ruby and some libraries has to be installed differently  
+# sudo apt install build-essential patch ruby-dev zlib1g-dev liblzma-dev libxml2-dev libxslt-dev
+# gem install nokogiri
+# sudo gem install nokogiri
+#sudo gem install parslet
+
+
