@@ -1,8 +1,12 @@
 #!/bin/bash
 
 ## Readme (General Tool Installation important)
-## https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
 
+## This script is meant more as a How-To then to be executed
+## Pay attention: There are several obstacles when used on different Linux Installations regarding tool versions.
+## Informantion derived from: 
+## https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
+## Buildroot needs Ruby. On Ubtuntu 
 ## Setup Pre Conditions
 
 sudo  apt-get install -y \
@@ -72,11 +76,11 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 100
 ## sudo python -m pip install matplotlib
 sudo apt install python3-matplotlib
 
-
 ## It can happe on Ubuntu 24.04 that ruby and some libraries has to be installed differently  
+## If Ruby is not yet installed on Ubuntu 24.04, many users first install various development tools and libraries with the following command:
 # sudo apt install build-essential patch ruby-dev zlib1g-dev liblzma-dev libxml2-dev libxslt-dev
-# gem install nokogiri
+## Only afterwards can Ruby itself and important libraries be installed without issues.
 # sudo gem install nokogiri
-#sudo gem install parslet
+# sudo gem install parslet
 
 
