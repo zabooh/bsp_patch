@@ -1,5 +1,4 @@
 
-
 ###################################################################################################
 ### ATTENTION THIS IS AN CONSTRUNCTION AREA #######################################################
 ###################################################################################################
@@ -87,7 +86,8 @@
 
 ## for example sending a file from LAN9662 to TFTP server
 #   tftp -p -l dev_tree.txt -r dev_tree.txt 169.254.35.184
-
+## Or ping a Host. Ensure to use the correct interface
+#   ping -I eth0 169.254.35.184
 
 ###################################################
 ##
@@ -96,31 +96,41 @@
 ## make menuconfig
 ##  System configuration  --->
 ##     (board/mscc/common/rootfs_overlay) Root filesystem overlay directories 
-##
+##   
+##    the Script S99myconfig.sh is automatically executed during startup and the 
+##    right place for own configuration setup
 ##
 ##    mscc-brsdk-source-2024.09/board/mscc/common/rootfs_overlay
 ##
-##   .
-##   ├── etc
-##   │   ├── mscc
-##   │   │   └── service
-##   │   │       └── debug_shell.service
-##   │   └── sysctl.d
-##   │       └── 99-sysctl.conf
-##   └── usr
-##       └── bin
-##           ├── dump-env.sh
-##           └── production-prepare.sh
+##    ├── etc  
+##    │   ├── init.d
+##    │   │   └── S99myconfig.sh
+##    │   ├── mscc
+##    │   │   └── service
+##    │   │       └── debug_shell.service
+##    │   └── sysctl.d
+##    │       └── 99-sysctl.conf
+##    └── usr
+##        └── bin
+##            ├── dump-env.sh
+##            └── production-prepare.sh
 ##
+##
+##  
+##  S99myconfig.sh
+##   #!/bin/sh
+##   echo "Start Custom-Configuration..." > /tmp/bootlog.txt
+##   # Sample Configuration
+##   
+##   ethtool --set-plca-cfg eth2 enable on node-id 0 node-cnt 8
+##   ip addr add dev eth2 169.254.35.112/16
+##   ip link set eth2 up
+##   
+##   ip addr add dev eth0 169.254.35.110/16
+##   ip link set eth0 up
+##   
+
+
 
 	
-
-
-
-  
-
-
-
-
-
 
