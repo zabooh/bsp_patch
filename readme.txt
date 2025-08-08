@@ -4,6 +4,10 @@
 ### ATTENTION THIS IS AN CONSTRUNCTION AREA #######################################################
 ###################################################################################################
 
+## Pay attention: There are several obstacles when used on different Linux Installations regarding tool versions.
+## Informantion derived from: 
+## https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
+## cmake version must be lower than 4.x.x
 
 ## the following scripts are more to copy from and paste line by line into the command line  
 ## in theory they could be called, but when things go wrong because of installation issues, you
