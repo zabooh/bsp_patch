@@ -1,7 +1,9 @@
 #!/bin/bash
 
-
 ## Readme (General Tool Installation important)
+## This script is meant more as a How-To then to be executed
+## Pay attention: There are several obstacles when used on different Linux Installations regarding tool versions.
+## Informantion derived from: 
 ## https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
 
 ## download and install the ARM compiler toolchain
