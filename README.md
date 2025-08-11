@@ -101,6 +101,13 @@ See [Microchip BSP Docs](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/get
 ## TestRig
 <img src="TestRig.png" alt="Test Rig" width="600">
 
+## iperf3 Test
+iperf3 client running on LAN992 for TCP test   
+<img src="iperf3_01.png" alt="iperf3" width="600">
+
+iperf3 server running on Ubuntu Mini PC  
+<img src="iperf3_02.png" alt="iperf3" width="600">
+
 ## Troubleshooting
 
 - **CMake version**: Ensure you use CMake < 4.x.x.
