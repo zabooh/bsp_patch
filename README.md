@@ -28,20 +28,15 @@ This project provides scripts and instructions for building and patching firmwar
 
 ## Setup on Linux Build Machine
 
-1. **Install required tools**
-   ```bash
-   ./lan865x_build_tool_setup.sh
-   ```
+1. **Install required tools**   
+   [lan865x_build_tool_setup.sh](lan865x_build_tool_setup.sh)
 
 2. **Rebuild default firmware for PCB8291**
-   ```bash
-   ./lan865x_build_first.sh
-   ```
+   [lan865x_build_first.sh](./lan865x_build_first.sh)
 
 3. **Patch sources for LAN9851 Click Board**
-   ```bash
-   ./lan865x_build_second.sh
-   ```
+   [lan865x_build_second.sh](./lan865x_build_second.sh)
+
 
 See [Microchip BSP Docs](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html) for detailed setup.
 
