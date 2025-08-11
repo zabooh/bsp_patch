@@ -27,6 +27,7 @@ This project provides scripts and instructions for building and patching firmwar
 - **Board**: LAN9662 PCB8291, LAN9851 Click Board
 
 ## Setup on Linux Build Machine
+This scripts are ment meant more as a How-To then to be executed
 
 1. **Install required tools**   
    [lan865x_build_tool_setup.sh](lan865x_build_tool_setup.sh)
