@@ -31,10 +31,10 @@ This project provides scripts and instructions for building and patching firmwar
 1. **Install required tools**   
    [lan865x_build_tool_setup.sh](lan865x_build_tool_setup.sh)
 
-2. **Rebuild default firmware for PCB8291**
+2. **Rebuild default firmware for PCB8291**  
    [lan865x_build_first.sh](./lan865x_build_first.sh)
 
-3. **Patch sources for LAN9851 Click Board**
+3. **Patch sources for LAN9851 Click Board**  
    [lan865x_build_second.sh](./lan865x_build_second.sh)
 
 
