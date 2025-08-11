@@ -1,16 +1,25 @@
 # BSP Patch Project
 
 ## Overview
-This project provides scripts and instructions for building and patching firmware for Microchip LAN9662 and LAN9851 devices, including setup and deployment using TFTP.
+This project provides scripts and instructions for building and patching firmware for Microchip LAN9662 and LAN8651 devices, including setup and deployment using TFTP.
 
 ## Table of Contents
+- [Hardware](#hardware)
 - [Prerequisites](#prerequisites)
 - [Setup on Linux Build Machine](#setup-on-linux-build-machine)
 - [TFTP Server Setup (Windows)](#tftp-server-setup-windows)
 - [Programming LAN9662 Board](#programming-lan9662-board)
 - [File Overlay and Customization](#file-overlay-and-customization)
+- [TestRig](#testrig)
 - [Troubleshooting](#troubleshooting)
 - [Resources](#resources)
+
+## Hardware
+<img src="Hardware.png" alt="Mein Logo" width="600">
+
+- LAN9662  [Part Number: EV09D37A](https://www.microchip.com/en-us/development-tool/EV09D37A) 
+- LAN8651  [Two Wire ETH Click](https://www.mikroe.com/two-wire-eth-click?srsltid=AfmBOopDht3M9EdZrYNWR_S_Tvb6l829HyGevOKJYZZs3my2bkcNKJjx)
+- Adaptor [Pi 2 Click Shield](https://www.mikroe.com/pi-2-click-shield)
 
 ## Prerequisites
 - **Linux**: CMake version < 4.x.x, other tools as per [Microchip BSP Getting Started](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html)
@@ -92,6 +101,9 @@ See [Microchip BSP Docs](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/get
   ip addr add dev eth0 169.254.35.110/16
   ip link set eth0 up
   ```
+
+## TestRig
+<img src="TestRig.png" alt="Test Rig" width="600">
 
 ## Troubleshooting
 
