@@ -11,23 +11,52 @@ The main differences between the two device trees relate to *additional support 
 **Key Additions in `lan966x-pcb8291.dts`**:
 ```powershell
 &flx2 {
-    compatible = "microchip,lan966x-flexcom";
-    ...
-    spi2: spi@400 {
-        ...
-        eth7: lan865x@0{
-            compatible = "microchip,lan8651", "microchip,lan8650";
-            reg = <0>; /* CE0 */
-            enable-gpios = <&gpio 35 0x6>; /* Output High, Single Ended, Open-Drain*/
-            interrupt-parent = <&gpio>;
-            interrupts = <36 0x2>; /* 0x2 - falling edge trigger */
-            local-mac-address = [04 05 06 01 02 03];
-            spi-max-frequency = <15000000>;
-            status = "okay";
-        };
-    };
+	compatible = "microchip,lan966x-flexcom";
+	reg = <0xe0060000 0x00000100>, <0xe2004180 0x00000008>;
+	atmel,flexcom-mode = <ATMEL_FLEXCOM_MODE_SPI>;   //DT: check if this mode exists as such - OK 
+	microchip,flx-shrd-pins = <1>;
+	microchip,flx-cs = <0>;
+	status = "okay";
+ 
+	spi2: spi@400 {
+		#address-cells = <1>;
+		#size-cells = <0>;
+		compatible = "atmel,at91rm9200-spi";
+		pinctrl-0 = <&fc2_b_pins>;
+		pinctrl-names = "default";
+		cs-gpios = <&gpio 40 GPIO_ACTIVE_LOW>;
+		status = "okay";
+		eth7: lan865x@0{
+			compatible = "microchip,lan8651", "microchip,lan8650";
+			reg = <0>; /* CE0 */
+			//pinctrl-names = "default";
+			//pinctrl-0 = <&eth7_pins>;
+			enable-gpios = <&gpio 35 0x6>; /* Output High, Single Ended, Open-Drain*/
+			interrupt-parent = <&gpio>;
+			interrupts = <36 0x2>; /* 0x2 - falling edge trigger */
+			local-mac-address = [04 05 06 01 02 03];
+			spi-max-frequency = <15000000>;
+			status = "okay";
+		};
+	};
 };
 ```
+this 
+```powershell
+cs-gpios = <&gpio 40 GPIO_ACTIVE_LOW>;
+```
+means that the SPI Chip Select is on PIN GPIO_40 -> (Pi Exp.) Pin 24 : GPIO8/CS0 -> Click 1 CS<br>
+<br>and this
+```powershell
+reg = <0>; /* CE0 */
+```
+tells the SPI driver to use the hardware SPI generated CS<br>
+<br>and finally
+```powershell
+enable-gpios = <&gpio 35 0x6>;
+```
+tells the driver to use GPIO_35 -> (Pi Exp.) Pin 29 : GPIO05 -> Click 1 RST<br>
+for the Reset Signal with Output High, Single Ended and Open-Drain<br>
 
 - **Additional SPI Pinmux**:
 ```powershell
@@ -37,6 +66,8 @@ The main differences between the two device trees relate to *additional support 
 		function = "fc2_b";
 	};
 ```
+the SCK, MISO, MOSI (GPIO_43, GPIO_44, GPIO_45) are routed to Click 1<br>
+ 
 Expansion Header des LAN9662 Board<br>
 <img src="Expansion_header.png" alt="Mein Logo" width="600"><br>
 Pi Shield from Raspberry Pi Expansion to Click Board<br>
