@@ -67,7 +67,8 @@ for the Reset Signal with Output High, Single Ended and Open-Drain<br>
 	};
 ```
 the SCK, MISO, MOSI (GPIO_43, GPIO_44, GPIO_45) are routed to Click 1<br>
-<br>and this declares GPIO36 as the interrupt signal from the lan865x to the MPU on (0x2) falling edge trigger
+<br>and this declares GPIO36 -> Pin 31 GPIO06 (Pi Exp.) -> Click 1 INT<br>
+as the interrupt signal from the lan865x to the MPU on (0x2) falling edge trigger
 ```powershell
 interrupts = <36 0x2>;  
 ```
