@@ -5,6 +5,7 @@ This project provides scripts and instructions for building and patching firmwar
 
 ## Table of Contents
 - [Hardware](#hardware)
+- [Hardware (DTS) and Kernel Driver description](#hardware-devicetree-and-kernel-driver-description)
 - [Prerequisites](#prerequisites)
 - [Setup on Linux Build Machine](#setup-on-linux-build-machine)
 - [TFTP Server Setup (Windows)](#tftp-server-setup-windows)
@@ -21,7 +22,7 @@ This project provides scripts and instructions for building and patching firmwar
 - LAN8651  [Two Wire ETH Click](https://www.mikroe.com/two-wire-eth-click?srsltid=AfmBOopDht3M9EdZrYNWR_S_Tvb6l829HyGevOKJYZZs3my2bkcNKJjx)
 - Adaptor [Pi 2 Click Shield](https://www.mikroe.com/pi-2-click-shield)
 
-## Hardware (DTS) and Kernel Driver description
+## Hardware Devicetree and Kernel Driver description
 [LAN865x Driver and Device Tree modifications](LAN865x_Driver.md)<br>
 
 ## Prerequisites
