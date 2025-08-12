@@ -1,44 +1,43 @@
 
-# MCP19xxx Series & LAN865x Linux Kernel Driver – Overview
-
-## MCP19xxx Series – Customer Update for MCP19115 User
-
-While I could not retrieve a dedicated marketing presentation or an up-to-date roadmap for the MCP19xxx product series, Microchip positions its MCP19111/15 analog-based power management controllers as part of an evolving family of highly flexible solutions, enabling increased efficiency and design optimization in power electronics.  
-If you want professionally designed marketing material, it is best to reach out directly to Microchip's sales or marketing division or check their official product documentation for the MCP19115 and newer MCP19xxx series information.
+# LAN865x Linux Kernel Driver – Overview
 
 ---
 
 ## Device Tree (.dts) Differences  
-**lan966x-pcb8291.dts** vs. **lan966x-pcb8291.lan865x.dts**
+**lan966x-pcb8291.dts** vs. **lan966x-pcb8291.org.dts**
 
 The main differences between the two device trees relate to *additional support for SPI-connected LAN865x MAC-PHY devices* in `lan966x-pcb8291.lan865x.dts`.
 
-**Key Additions in `lan966x-pcb8291.lan865x.dts`**:
+**Key Additions in `lan966x-pcb8291.dts`**:
+```powershell
 &flx2 {
-compatible = "microchip,lan966x-flexcom";
-spi2: spi@400 {
-eth7: lan865x@0 {
-compatible = "microchip,lan8651", "microchip,lan8650";
-reg = <0>; /* CE0 */
-enable-gpios = <&gpio 35 0x6>;
-interrupt-parent = <&gpio>;
-interrupts = <36 0x2>;
-local-mac-address = [04 05 06 01 02 03];
-spi-max-frequency = <15000000>;
-status = "okay";
+    compatible = "microchip,lan966x-flexcom";
+    ...
+    spi2: spi@400 {
+        ...
+        eth7: lan865x@0{
+            compatible = "microchip,lan8651", "microchip,lan8650";
+            reg = <0>; /* CE0 */
+            enable-gpios = <&gpio 35 0x6>; /* Output High, Single Ended, Open-Drain*/
+            interrupt-parent = <&gpio>;
+            interrupts = <36 0x2>; /* 0x2 - falling edge trigger */
+            local-mac-address = [04 05 06 01 02 03];
+            spi-max-frequency = <15000000>;
+            status = "okay";
+        };
+    };
 };
-};
-};
-
-text
+```
 
 - **Additional SPI Pinmux**:
-fc2_b_pins: fc2-b-pins {
-pins = "GPIO_43", "GPIO_44", "GPIO_45";
-function = "fc2_b";
-};
+```powershell
+	fc2_b_pins: fc2-b-pins {
+		/* SCK, MISO, MOSI*/  //DT: check on order required from driver
+		pins = "GPIO_43", "GPIO_44", "GPIO_45";
+		function = "fc2_b";
+	};
+```
 
-text
 - Rest of the DTS remains largely identical.
 
 ---
