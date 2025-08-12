@@ -37,12 +37,12 @@ The main differences between the two device trees relate to *additional support 
 		function = "fc2_b";
 	};
 ```
-Expansion Header des LAN9662 Board
+Expansion Header des LAN9662 Board<br>
 <img src="Expansion_header.png" alt="Mein Logo" width="600"><br>
-Pi Shield from Raspberry Pi Expansion to Click Board
+Pi Shield from Raspberry Pi Expansion to Click Board<br>
 <img src="Pi_Shield.png" alt="Mein Logo" width="600"><br>
-Click Connector of the LAN865x Board
-<img src="Click_Connector.png" alt="Mein Logo" width="600">
+Click Connector of the LAN865x Board<br>
+<img src="Click_Connector.png" alt="Mein Logo" width="600"><br>
 
 
 - Rest of the DTS remains largely identical.
