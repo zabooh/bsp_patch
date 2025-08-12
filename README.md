@@ -50,7 +50,6 @@ See [Microchip BSP Docs](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/get
 1. **Install py3tftp**
    ```powershell
    pip install py3tftp
-   py3tftp --host 0.0.0.0 -p 6969
    ```
 
 2. **Allow UDP port 69 in Firewall**
