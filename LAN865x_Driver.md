@@ -128,5 +128,137 @@ The main differences between the two device trees relate to *additional support 
 
 ---
 
+# LAN865x Linux Kernel Driver – Structures and Functions Overview
+
+This document lists all **structures** and **functions** of the Microchip **LAN865x** Linux kernel driver and its associated **OA-TC6** MAC-PHY serial interface library, including descriptions extracted from the driver’s in-code comments.
+
+---
+
+## Structures
+
+### `struct lan865x_priv`
+Private per-device data for the LAN865x network driver.
+
+| Member | Description |
+|--------|-------------|
+| `struct work_struct multicast_work` | Work handler for multicast configuration updates |
+| `struct net_device *netdev` | Pointer to Ethernet `net_device` |
+| `struct spi_device *spi` | Pointer to SPI device instance |
+| `struct oa_tc6 *tc6` | Pointer to OA-TC6 interface structure |
+
+---
+
+### `struct oa_tc6`
+Internal structure for the OA-TC6 (OPEN Alliance 10BASE‑T1x MAC‑PHY Serial Interface) link layer.
+
+Handles:
+- SPI transactions
+- Reference to associated `net_device` and `phy_device`
+- MDIO bus access
+- Buffer/queue management for TX/RX
+- Threading and interrupt signalling
+
+---
+
+## Functions
+
+### **LAN865x Main Driver (`lan865x.c`)**
+
+| Function | Description |
+|----------|-------------|
+| `lan865x_set_hw_macaddr_low_bytes` | Writes low 4 bytes of device MAC address to hardware registers |
+| `lan865x_set_hw_macaddr` | Writes complete hardware MAC address, handling rollback on failure |
+| `lan865x_get_drvinfo` | Fills `ethtool_drvinfo` structure for user queries |
+| `lan865x_set_mac_address` | Sets new MAC address in hardware, updates netdev |
+| `lan865x_hash` | Computes multicast hash index from MAC address |
+| `lan865x_set_specific_multicast_addr` | Programs hardware multicast filter entries |
+| `lan865x_multicast_work_handler` | Updates promiscuous/multicast/unicast receive modes |
+| `lan865x_set_multicast_list` | Schedules asynchronous multicast filter updates |
+| `lan865x_send_packet` | Sends Ethernet frame via OA-TC6 interface |
+| `lan865x_hw_disable` | Disables TX/RX in LAN865x hardware |
+| `lan865x_net_close` | Stops network interface and hardware |
+| `lan865x_hw_enable` | Enables TX/RX in hardware |
+| `lan865x_net_open` | Opens network interface, starts PHY |
+| `lan865x_configure_fixup` | Applies errata register fixup (from AN1760) |
+| `lan865x_set_zarfe` | Sets ZARFE bit (Zero-Align Receive Frame Enable workaround) |
+| `lan865x_probe` | Probes device, allocates netdev, initializes OA-TC6, sets MAC |
+| `lan865x_remove` | Removes device, cleans up resources |
+
+---
+
+### **Netdev & SPI Driver Structures**
+
+- `lan865x_ethtool_ops` – Hooks for ethtool support  
+- `lan865x_netdev_ops` – Network interface operations (open, stop, start_xmit, etc.)  
+- `spidev_spi_ids[]` – SPI device name matching table  
+- `lan865x_dt_ids[]` – Device Tree `compatible` match table  
+- `lan865x_driver` – SPI driver registration block
+
+---
+
+## OA-TC6 Public API (`oa_tc6.h` / `oa_tc6.c`)
+
+### Public Functions
+
+| Function | Description |
+|----------|-------------|
+| `oa_tc6_init` | Allocates & initializes OA-TC6 instance, resets MAC-PHY, starts SPI thread |
+| `oa_tc6_exit` | Shuts down OA-TC6, disconnects PHY, frees resources |
+| `oa_tc6_write_register` | Writes single MAC-PHY register |
+| `oa_tc6_write_registers` | Writes multiple consecutive registers |
+| `oa_tc6_read_register` | Reads single MAC-PHY register |
+| `oa_tc6_read_registers` | Reads multiple consecutive registers |
+| `oa_tc6_start_xmit` | Queues Ethernet frame for transmission over SPI |
+
+---
+
+## Selected OA-TC6 Internal Functions
+
+### SPI Transfer Layer
+- `oa_tc6_spi_transfer` – Performs SPI transfer for control or data headers
+- `oa_tc6_prepare_ctrl_header` – Builds control SPI header word
+- `oa_tc6_prepare_ctrl_spi_buf` – Writes header and optional register values into SPI buffer
+- `oa_tc6_perform_ctrl` – Transfers prepared control command and verifies echo
+
+### MDIO Support
+- `oa_tc6_mdiobus_register` / `oa_tc6_mdiobus_unregister`  
+- `oa_tc6_mdiobus_read` / `oa_tc6_mdiobus_write`  
+- `oa_tc6_mdiobus_read_c45` / `oa_tc6_mdiobus_write_c45`  
+
+### PHY Management
+- `oa_tc6_phy_init` – Set up MDIO, find & connect PHY
+- `oa_tc6_phy_exit` – Disconnect and tear down MDIO bus
+
+### Data Handling
+- RX: `oa_tc6_process_spi_data_rx_buf`, `oa_tc6_prcs_rx_chunk_payload`  
+- TX: `oa_tc6_add_tx_skb_to_spi_buf`, `oa_tc6_prepare_spi_tx_buf_for_tx_skbs`
+- Error handling: `oa_tc6_process_extended_status`, `oa_tc6_macphy_isr`
+
+---
+
+## Internal Flow
+
+1. **Device Tree Match** → `lan865x_probe()`
+2. Initialize OA‑TC6 → Reset MAC‑PHY
+3. Apply fixups (errata workarounds)
+4. Set MAC address (from DT or random)
+5. Register `net_device`
+6. SPI thread handles TX/RX chunks based on MAC‑PHY interrupts
+
+---
+
+## Notes
+- The LAN865x driver depends on OA‑TC6 for SPI framing and transport
+- Hardware quirks managed via fixup and ZARFE configuration
+- Fully device-tree driven for hardware configuration
+
+---
+
+**Reference Documentation:**  
+- Microchip LAN865x Errata (AN1760)  
+- OPEN Alliance 10BASE‑T1x Serial Interface Specification v1.1
+
+---
+
 ## Conclusion
 The LAN865x kernel driver is a **device tree–driven network driver** for Microchip’s SPI‑attached 10BASE‑T1S MAC‑PHY devices. All hardware-specific parameters are declared in the DTS, allowing simple adaptation to new boards without changing driver source code.
