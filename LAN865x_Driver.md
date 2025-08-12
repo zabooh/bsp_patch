@@ -39,29 +39,26 @@ The main differences between the two device trees relate to *additional support 
 	};
 };
 ```
-this 
+
 ```powershell
 cs-gpios = <&gpio 40 GPIO_ACTIVE_LOW>;
 ```
-means that the SPI Chip Select is on PIN GPIO_40 -> (Pi Exp.) Pin 24 : GPIO8/CS0 -> Click 1 CS<br>
-<br>and this
+this means that the SPI Chip Select is on PIN GPIO_40 -> (Pi Exp.) Pin 24 : GPIO8/CS0 -> Click 1 CS<br>
+
 ```powershell
 reg = <0>; /* CE0 */
 ```
-tells the SPI driver to use the hardware SPI generated CS<br>
-
-
-<br>and this declares GPIO36 -> Pin 31 GPIO06 (Pi Exp.) -> Click 1 INT<br>
-as the interrupt signal from the lan865x to the MPU on (0x2) falling edge trigger
+and this tells the SPI driver to use the hardware SPI generated CS<br>
 ```powershell
 interrupts = <36 0x2>;  
 ```
+and this declares GPIO36 -> Pin 31 GPIO06 (Pi Exp.) -> Click 1 INT<br>
+as the interrupt signal from the lan865x to the MPU on (0x2) falling edge trigger
 
-<br>and finally
 ```powershell
 enable-gpios = <&gpio 35 0x6>;
 ```
-tells the driver to use GPIO_35 -> (Pi Exp.) Pin 29 : GPIO05 -> Click 1 RST<br>
+this tells the driver to use GPIO_35 -> (Pi Exp.) Pin 29 : GPIO05 -> Click 1 RST<br>
 for the Reset Signal with Output High, Single Ended and Open-Drain<br>
 
 - **Additional SPI Pinmux**:
