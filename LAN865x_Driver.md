@@ -67,7 +67,12 @@ for the Reset Signal with Output High, Single Ended and Open-Drain<br>
 	};
 ```
 the SCK, MISO, MOSI (GPIO_43, GPIO_44, GPIO_45) are routed to Click 1<br>
- 
+<br>and this declares GPIO36 as the interrupt signal from the lan865x to the MPU on (0x2) falling edge trigger
+```powershell
+interrupts = <36 0x2>;  
+```
+
+
 Expansion Header des LAN9662 Board<br>
 <img src="Expansion_header.png" alt="Mein Logo" width="600"><br>
 Pi Shield from Raspberry Pi Expansion to Click Board<br>
