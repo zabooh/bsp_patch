@@ -21,6 +21,9 @@ This project provides scripts and instructions for building and patching firmwar
 - LAN8651  [Two Wire ETH Click](https://www.mikroe.com/two-wire-eth-click?srsltid=AfmBOopDht3M9EdZrYNWR_S_Tvb6l829HyGevOKJYZZs3my2bkcNKJjx)
 - Adaptor [Pi 2 Click Shield](https://www.mikroe.com/pi-2-click-shield)
 
+## Hardware (DTS) and Kernel Driver description
+[LAN865x Driver and Device Tree modifications](LAN865x_Driver.md)<br>
+
 ## Prerequisites
 - **Linux**: CMake version < 4.x.x, other tools as per [Microchip BSP Getting Started](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html)
 - **Windows**: Python 3, `py3tftp`
