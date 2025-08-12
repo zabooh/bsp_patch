@@ -51,6 +51,14 @@ means that the SPI Chip Select is on PIN GPIO_40 -> (Pi Exp.) Pin 24 : GPIO8/CS0
 reg = <0>; /* CE0 */
 ```
 tells the SPI driver to use the hardware SPI generated CS<br>
+
+
+<br>and this declares GPIO36 -> Pin 31 GPIO06 (Pi Exp.) -> Click 1 INT<br>
+as the interrupt signal from the lan865x to the MPU on (0x2) falling edge trigger
+```powershell
+interrupts = <36 0x2>;  
+```
+
 <br>and finally
 ```powershell
 enable-gpios = <&gpio 35 0x6>;
@@ -67,11 +75,7 @@ for the Reset Signal with Output High, Single Ended and Open-Drain<br>
 	};
 ```
 the SCK, MISO, MOSI (GPIO_43, GPIO_44, GPIO_45) are routed to Click 1<br>
-<br>and this declares GPIO36 -> Pin 31 GPIO06 (Pi Exp.) -> Click 1 INT<br>
-as the interrupt signal from the lan865x to the MPU on (0x2) falling edge trigger
-```powershell
-interrupts = <36 0x2>;  
-```
+
 
 
 Expansion Header des LAN9662 Board<br>
