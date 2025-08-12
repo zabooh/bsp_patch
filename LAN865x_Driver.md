@@ -39,7 +39,8 @@ The main differences between the two device trees relate to *additional support 
 ```
 
 <img src="Expansion_header.png" alt="Mein Logo" width="600"><br>
-<img src="Pi_Shield.png" alt="Mein Logo" width="600">
+<img src="Pi_Shield.png" alt="Mein Logo" width="600"><br>
+<img src="Click_Connector.png" alt="Mein Logo" width="600">
 
 
 - Rest of the DTS remains largely identical.
