@@ -29,8 +29,6 @@ The main differences between the two device trees relate to *additional support 
 		eth7: lan865x@0{
 			compatible = "microchip,lan8651", "microchip,lan8650";
 			reg = <0>; /* CE0 */
-			//pinctrl-names = "default";
-			//pinctrl-0 = <&eth7_pins>;
 			enable-gpios = <&gpio 35 0x6>; /* Output High, Single Ended, Open-Drain*/
 			interrupt-parent = <&gpio>;
 			interrupts = <36 0x2>; /* 0x2 - falling edge trigger */
