@@ -80,7 +80,7 @@ sudo apt install python3-matplotlib
 ## If Ruby is not yet installed on Ubuntu 24.04, many users first install various development tools and libraries with the following command:
 # sudo apt install build-essential patch ruby-dev zlib1g-dev liblzma-dev libxml2-dev libxslt-dev
 ## Only afterwards can Ruby itself and important libraries be installed without issues.
-# sudo gem install nokogiri
+# sudo gem install nokogiri -v 1.15.5
 # sudo gem install parslet
 
 
