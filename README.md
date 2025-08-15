@@ -108,16 +108,19 @@ See [Microchip BSP Docs](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/get
   ip addr add 169.254.35.112/16 dev eth0
   ip addr add 192.168.178.20/24 dev eth1 
   ip addr add 192.168.0.5/24 dev eth2
-
+  
   ip link set eth0 up
   ip link set eth1 up
   ip link set eth2 up
   ```
 
-Left Port:  eth0  169.254.35.112/16   (AutoIP Adressing)<br> 
-Right Port: eth1  192.168.178.20/24   (typical FritzBox IP)<br>
-T1S Port:   eth2  192.168.0.5/24      (typical DHCP IP)<br>
-<br>
+### `IP Address Assignement`  
+| Hardware Port | interface | IP                 | Description         |
+|---------------|-----------|--------------------|---------------------|
+|Left Port      | eth0      | 169.254.35.112/16  | AutoIP Adressing    |
+|Right Port:    | eth1      | 192.168.178.20/24  | typical FritzBox IP |
+|T1S Port:      | eth2      | 192.168.0.5/24     | typical DHCP IP     |
+
 For using the SSH, you must first access the board via terminal console and set an password with "passwd"
 Then an SSH Daemon is available on all interfaces
 <br>
