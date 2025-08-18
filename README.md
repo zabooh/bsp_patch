@@ -114,6 +114,32 @@ See [Microchip BSP Docs](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/get
   ip link set eth2 up
   ```
 
+## or compiled as a loadable module you must start the driver with
+
+```bash
+  ip link set eth0 down
+  ip link set eth1 down
+
+  modprobe lan865x_t1s
+  ethtool --set-plca-cfg eth2 enable on node-id 0 node-cnt 8
+  ethtool --get-plca-cfg eth2
+
+  ip addr flush dev eth0
+  ip addr flush dev eth1
+  ip addr flush dev eth2
+
+  ip addr add 169.254.35.112/16 dev eth0
+  ip addr add 192.168.178.20/24 dev eth1 
+  ip addr add 169.254.35.110/16 dev eth2
+
+  ip link set eth2 up
+  ping 169.254.35.184
+
+  ip link set eth0 up
+  ip link set eth1 up
+  
+```
+
 ### `IP Address Assignement`  
 | Hardware Port | interface | IP                 | Description         |
 |---------------|-----------|--------------------|---------------------|
