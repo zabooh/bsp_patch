@@ -4,6 +4,7 @@
 ## https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
 
 ## Patch the Kernel Driver, the DTS and the linux config for LAN865X support
+## zip -r lan865x_driver.zip mscc-brsdk-source-2024.09/output/mybuild/build/linux-custom/drivers/net/ethernet/microchip/
 unzip lan865x_driver.zip
 tar xfv lan865x_dts.tar.gz
 tar xfv linux-custom-patch.tar.gz
