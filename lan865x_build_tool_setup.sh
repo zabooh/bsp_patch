@@ -66,6 +66,9 @@ sudo  apt-get install -y \
     wget \
     xz-utils \
 
+## if ruby is not installed
+sudo apt install ruby-full
+
 ## Additional Ruby packages
 sudo gem install nokogiri asciidoctor
 
