@@ -9,6 +9,7 @@ tar xfv lan865x_dts.tar.gz
 tar xfv linux-custom-patch.tar.gz
 tar xfv linux-kernel-config.tar.gz
 tar xfv lan865x_file_overlay.tar.gz
+tar xfv lan865x_InitScript.tar.gz
 
 cd ./mscc-brsdk-source-2024.09/output/mybuild
 ## do it again
