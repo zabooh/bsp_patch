@@ -12,6 +12,9 @@ unzip lan865x_dts.zip
 unzip lan865x_linux_custom_config.zip
 ## zip -r lan865x_file_overlay.zip mscc-brsdk-source-2024.09/board/mscc/common/rootfs_overlay/
 unzip lan865x_file_overlay.zip
+## zip -r lan865x_buildroot_config.zip mscc-brsdk-source-2024.09/output/mybuild/.config
+unzip zip lan865x_buildroot_config.zip
+
 
 cd ./mscc-brsdk-source-2024.09/output/mybuild
 ## do it again
