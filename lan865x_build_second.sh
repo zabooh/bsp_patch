@@ -8,14 +8,10 @@
 unzip lan865x_driver.zip
 ## zip lan865x_dts.zip mscc-brsdk-source-2024.09/output/mybuild/build/linux-custom/arch/arm/boot/dts/microchip/lan966x-pcb8291.dts
 unzip lan865x_dts.zip
-##
-tar xfv linux-custom-patch.tar.gz
-##
-tar xfv linux-kernel-config.tar.gz
+## zip -r lan865x_linux_custom_config.zip mscc-brsdk-source-2024.09/output/mybuild/build/linux-custom/.config
+unzip lan865x_linux_custom_config.zip
 ## zip -r lan865x_file_overlay.zip mscc-brsdk-source-2024.09/board/mscc/common/rootfs_overlay/
 unzip lan865x_file_overlay.zip
-##
-tar xfv lan865x_InitScript.tar.gz
 
 cd ./mscc-brsdk-source-2024.09/output/mybuild
 ## do it again
