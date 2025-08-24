@@ -4,8 +4,8 @@
 ## https://microchip-ung.github.io/bsp-doc/bsp/2025.03/getting-started.html
 
 ## Patch the Kernel Driver, the DTS and the linux config for LAN865X support
-tar xfv lan865x_driver.202507291238.tar.gz
-tar xfv lan865x_dts.202507291238.tar.gz
+tar xfv lan865x_driver.tar.gz
+tar xfv lan865x_dts.tar.gz
 tar xfv linux-custom-patch.tar.gz
 tar xfv linux-kernel-config.tar.gz
 tar xfv lan865x_file_overlay.tar.gz
