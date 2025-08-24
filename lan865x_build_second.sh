@@ -13,7 +13,7 @@ tar xfv linux-custom-patch.tar.gz
 ##
 tar xfv linux-kernel-config.tar.gz
 ## zip -r lan865x_file_overlay.zip mscc-brsdk-source-2024.09/board/mscc/common/rootfs_overlay/
-unzip lan865x_file_overlay.tar.gz
+unzip lan865x_file_overlay.zip
 ##
 tar xfv lan865x_InitScript.tar.gz
 
