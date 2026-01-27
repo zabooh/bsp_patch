@@ -71,7 +71,7 @@ See [Microchip BSP Docs](https://microchip-ung.github.io/bsp-doc/bsp/2025.03/get
    ```bash
    setenv ipaddr 169.254.35.123
    setenv netmask 255.255.0.0
-   tftp 169.254.35.184:brsdk_standalone_arm.ext4.gz
+   tftp 169.254.87.46:brsdk_standalone_arm.ext4.gz
    unzip ${loadaddr} ${mmc_unzip_loadaddr}
    run mmc_format
    run mmc_boot0_upd; run mmc_boot1_upd
